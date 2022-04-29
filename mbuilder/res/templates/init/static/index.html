@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en"> <!-- your language here -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hello</title> <!-- your title here -->
+
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+  <!-- your content here... -->
+	<form>
+		<button onclick="sendForm()"> Install </button>
+	</form>
+	
+	<script src="guy.js"></script>	
+	
+	<script>
+		function sendForm(){
+			self.install({
+				"folder":null,
+				"name":"test",
+				"disconnect":true,
+				"require":{
+					"sudo":true
+					}
+			})
+		}
+	</script>
+</body>
+</html>

@@ -1,4 +1,9 @@
 env/
+tests/
+app/
+build/
+mb_env/
+dist/
 **/__pycache__
 *.pyi
 *.pyc

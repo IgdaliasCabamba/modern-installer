@@ -1,0 +1,6 @@
+altgraph==0.17.2
+context-menu==1.2.3
+guy==0.7.6
+pyinstaller==4.10
+pyinstaller-hooks-contrib==2022.3
+tornado==6.1

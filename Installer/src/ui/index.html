@@ -1,0 +1,47 @@
+<!doctype html>
+
+<!--Be free to modify according your desires and necessities-->
+
+<html lang="en"> <!-- your language here -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hello</title> <!-- your title here -->
+
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+  <!-- your content here... -->
+	<form>
+		<button onclick="sendForm()"> Install </button>
+	</form>
+	
+	<script src="guy.js"></script>	
+	
+	<script>
+		function sendForm(){
+			self.install({
+				"folder":null, //directory where will be installed (it's relative to user's home path)
+				//let null to install on default path
+				"disconnect":true, //disconnect the backend after installation process
+				"readme":null,
+				"options":{
+					"show_readme":true, //show readme after installation
+					"add_to_workspace":true, //add a desktop file to user's workspace
+					"add_to_menu":true //add a desktop file to user's workspace
+					},
+				"then":{
+					"open":true, //launch the program after installation
+					"open_url":null //put url here to open after installation
+				}
+			})
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "name":"Test",
+    "id":"Test999",
+    "app-type":"image", // use "image" for appimages and source for tar packages
+    "setup-file":"setup", // use "setup file name" or "null"
+    //relative to "install" directory
+
+    "desktop-file":{
+        //Read the docs at:https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html to more details
+        "name":"Test",
+        "generic_name":"Test-foo",
+        "comment": "Testing the foo bar",
+        "exec":"sh", //application that will run your program
+                    //let empty ("") to run only your program
+
+        "icon":"appicon.png", //relative to "install" directory
+        "terminal":false,
+        "type":"Application",
+        "categories":"Other"
+    }
+}

@@ -6,6 +6,7 @@ import tarfile
 import shutil
 import getpass
 import desktop_file
+import webbrowser
 
 if getattr(sys, "frozen", False):
     root_path = os.path.dirname(os.path.realpath(sys.executable))
@@ -29,7 +30,7 @@ for require_dir in require_dirs:
     if not os.path.exists(require_dir):
         os.makedirs(require_dir)
 
-def get_desktop_file(data, exec_path):
+def get_desktop_shortcut(data, exec_path):
     desktop_path = desktop_file.getDesktopPath()
     shortcut = desktop_file.Shortcut(desktop_path, data["id"], exec_path)
     return shortcut
@@ -83,16 +84,19 @@ class Backend:
 
             os.system(f"chmod 774 {setup}")
             os.system(f'.{setup}')
-        
-            #os.system(f'echo "{sudo_pw}" | sudo -S chmod 774 {setup}')
-            #os.system(f'echo "{sudo_pw}" | sudo -S {setup}')
-        
-            #os.remove(setup)
             shutil.rmtree(setup)
         
         if isinstance(SETTINGS["desktop-file"], dict):
-            data = SETTINGS["desktop-file"]
-            desktop_file = get_desktop_file(data, self.install_folder)
+            if data["options"]["add_to_workspace"]:
+                workspace_desktop_file = get_desktop_shortcut(SETTINGS["desktop-file"], self.install_folder)
+                workspace_desktop_file.save()
+
+            if data["options"]["add_to_menu"]:
+                menu_desktop_file = get_menu_shortcut(SETTINGS["desktop-file"], self.install_folder)
+                menu_desktop_file.save()
+        
+        if isinstance(data["then"]["open_url"], str):
+            webbrowser.open(data["then"]["open_url"], new=2)
 
         if data["disconnect"]:
             self.exit()
